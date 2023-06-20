@@ -1,0 +1,49 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rhug-angular-rhug-angular-poi-map-app-dev
+  annotations:
+    argocd/app-name: rhug-angular-rhug-angular-poi-map-app-dev
+    backstage.io/kubernetes-id: rhug-angular-rhug-angular-poi-map-app-dev
+    backstage.io/kubernetes-namespace: rhug-angular
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=rhug-angular-rhug-angular-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: ultraJeffOrg/rhug-angular-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.cluster-gqd95.gqd95.sandbox1540.opentlc.com/dev-pipelines/ns/rhug-angular/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.cluster-gqd95.gqd95.sandbox1540.opentlc.com/k8s/ns/rhug-angular/deployments/rhug-angular-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.cluster-gqd95.gqd95.sandbox1540.opentlc.com/#https://github.com/ultraJeffOrg/rhug-angular-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://rhug-angular-poi-map-app-rhug-angular.apps.cluster-gqd95.gqd95.sandbox1540.opentlc.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/ultrajeff"
+  system: workshop-system-rhug-angular
+  consumesApis:
+    - gateway-api-rhug-angular
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-rhug-angular
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/ultrajeff"
